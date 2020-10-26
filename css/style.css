@@ -36,7 +36,7 @@ body {
 }
 
 #logo:hover {
-    color: #384769;
+    color: #ffecb8;
     transition: 0.3s linear;
 }
 
@@ -50,6 +50,7 @@ body {
 
 .nav__contents li {
     display: flex;
+    padding: 0;
 }
 
 .nav__contents--content {
@@ -78,6 +79,16 @@ body {
     outline: none;
     transition: 0.2s linear;
     background: #ffffff5e;
+}
+
+#crms {
+    text-indent: 1rem;
+    font-weight: 900;
+}
+
+hr {
+    border: none;
+    border-bottom: 1px solid #bdbec2;
 }
 
 .section-container {
@@ -198,6 +209,37 @@ body {
     text-align: left;
     text-indent: 1rem;
     margin-bottom: 30px;
+}
+
+.dev-list {
+    display: flex;
+    flex-direction: row;
+    max-width: 1300px;
+    justify-content: space-evenly;
+}
+
+.dev-list-title {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 900;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.dev-list-person {
+}
+
+.person-img {
+    width: 250px;
+}
+
+.person-name {
+    text-indent: 1rem;
+}
+
+.person-info {
+    text-indent: 1rem;
 }
 
 footer {
