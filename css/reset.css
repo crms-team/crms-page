@@ -159,3 +159,12 @@ table {
     width: 530px;
     margin-right: 10px;
 }
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+p {
+    line-height: 24px;
+}
