@@ -1,0 +1,173 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
+body {
+    width: 100%;
+    position: relative;
+    color: #384769;
+    font-family: "NanumSquare", sans-serif;
+    height: 100vh;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #7e9fdf;
+    height: 60px;
+    width: 100%;
+}
+
+.header-container div {
+    max-width: 1300px;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+.header-container div nav {
+    width: 450px;
+}
+
+#logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+#logo:hover {
+    color: #384769;
+    transition: 0.3s linear;
+}
+
+.nav__contents {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 700px;
+}
+
+.nav__contents li {
+    display: flex;
+}
+
+.nav__contents--content {
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 0.3rem;
+    background: transparent;
+    transition: 0.2s linear;
+    color: #fff;
+    font-size: 1.05rem;
+    width: 100%;
+    min-width: 50px;
+    outline: none;
+}
+
+.nav__contents--content:hover {
+    background: #ffffff27;
+    transition: 0.2s linear;
+    display: inline-block;
+    outline: none;
+}
+.nav__contents--content:active {
+    border: none;
+    outline: none;
+    transition: 0.2s linear;
+    background: #ffffff5e;
+}
+
+.section__content-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 25%;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 40px;
+}
+
+.sidebar--title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #7e9fdf;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid rgb(199, 199, 199);
+}
+
+.sidebar--menu li {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.menu-btn {
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.4rem;
+    text-align: left;
+    background: transparent;
+    font-size: 1rem;
+}
+
+.menu-btn:active {
+    border: none;
+    outline: none;
+    transition: 0.2s linear;
+}
+
+.menu-btn:hover {
+    color: #7e9fdf;
+    background: #ffffff27;
+    transition: 0.2s linear;
+    display: inline-block;
+    outline: none;
+}
+
+.contents {
+    width: 85%;
+    padding: 40px;
+}
+
+.contents--title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #7e9fdf;
+}
+
+.contents--content {
+    margin-top: 15px;
+}
+
+footer {
+    position: relative;
+    margin-top: 100px;
+}
+
+footer div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    margin-top: 100px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-bottom: 10px;
+}
