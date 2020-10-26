@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRMS</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/guide.css">
+    <script>
+        function goto(url) {
+            if (url.indexOf('github') > -1) {
+                window.open(url)
+            } else {
+                window.location.href = url
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header class="header-container">
+        <div>
+            <nav>
+                <a href="./idnex.html" id="logo">CRMS</a>
+            </nav>
+            <div>
+                <ul class="nav__contents">
+                    <li><button class="nav__contents--content" onclick="goto('./index.html')">소개</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('./guide.html')">Guide</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('./functions.html')">기능 소개</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('./api.html')">API 문서</button></li>
+                    <li><button class="nav__contents--content"
+                            onclick="goto('https://github.com/crms-team/crms')">github</button></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div style="width: 60%; margin-left: 20%">
+        <div class="content-container top">
+            <h1 id="-">기능 설명</h1>
+            <hr>
+            <ol>
+            <li>Home</li>
+            <p>등록된 클라우드에 대한 간단한 요약을 볼 수 있는 페이지 입니다. 오른쪽 위에 Select를 이용해 키를 고를 수 있고, 사용자가 고른 클라우드에 대한 데이터만을 출력합니다.</p>
+            <p>하단에 있는 Hisotry Graph와 Summary는 등록된 클라우드에 존재하는 리소스들에 변화를 출력합니다. Graph를 통해 언제 무엇이 이루어졌는지 확인할 수 있으며 Summary를 통해 정확히 어떤 값이 변했는 지 확인할 수 있습니다. 하단에 More History button으로 History 페이지로 이동할 수 있습니다.</p>
+            <p><img src="https://user-images.githubusercontent.com/37172677/97169030-b7d6b180-17cc-11eb-97fd-5fb6c651288b.png" alt="image"></p>
+            <hr>
+            <li>History</li>
+            <p>등록된 클라우드 리소스에 변화된 값들을 출력합니다. 해당 클라우드에서 어떤 리소스들이 변했는지에 대한 자세한 정보는 Row를 클릭할 시 나옵니다. 또한 나온 리소스 값이 어떻게 변했는 지는 펼쳐진 Row에서 index를 클릭할 시 모달을 통해 나오게 됩니다. 또한 나온 Modal에 있는 Detail 버튼을 클릭할 경우 해당 리소스에 대한 더욱 자세한 정보가 있는 Detail page로 이동하게 됩니다.</p>
+                <div style="display: inline-flex;">
+                    <p><img class="half_img" src="https://user-images.githubusercontent.com/37172677/97169106-d472e980-17cc-11eb-9862-b4ee4a2a85f9.png" alt="image"></p>
+                    <p><img class="half_img" src="https://user-images.githubusercontent.com/37172677/97169149-e785b980-17cc-11eb-9c2c-66a86f2c0708.png" alt="image"></p>        
+                </div>
+            <hr>
+            <li>Resource</li>
+            <p>등록된 클라우드 리소스를 각 세션에 따라 확인할 수 있는 페이지 입니다. 각 세션에서는 세션에 해당하는 리소스에 대한 상태를 간략하게 확인할 수 있으며 모든 세션에서는 해당 리소스 삭제가 가능합니다. Server 와 Database에 경우 on, off 기능을 지원합니다. 각 인덱스를 클릭할 시 Detail page로 이동하며 옆에 있는 Select 를 클릭해 row를 선택하여 동시에 작업할 수 있습니다.</p>
+            <p><img src="https://user-images.githubusercontent.com/37172677/97169210-07b57880-17cd-11eb-995e-62cd06d7f31d.png" alt="image"></p>
+            <hr>
+            <li>Detail</li>
+            <p>사용자가 선택한 특정 클라우드 리소스에 대한 데이터를 확인할 수 있는 페이지입니다. 사용자는 View Object를 클릭함으로 더욱 자세한 데이터를 확인할 수 있습니다. 또한 오른쪽 위에 존재하는 Modify 페이지로 이동할 수 있습니다.</p>
+            <p><img src="https://user-images.githubusercontent.com/37172677/97170223-a2fb1d80-17ce-11eb-8773-a9dbb25c87c6.png" alt="image"></p>
+            <hr>
+            <li>Modify</li>
+            <p>사용자가 선택한 특정 클라우드 리소스에 데이터를 변경할 수 있는 페이지입니다. 특정 리소스에 존재하는 변화 가능한 값을 수정할 수 있습니다.</p>
+            <p><img src="https://user-images.githubusercontent.com/37172677/97170250-b0180c80-17ce-11eb-8828-b78c9c5b2f53.png" alt="image"></p>
+            <hr>
+            <li>Viusalization</li>
+            <p>등록된 클라우드에 대한 아키텍처를 시각화를 통해 확인할 수 있는 페이지 입니다. 시각화를 통해 나타난 아키텍처는 상위 노드를 마우스 오른쪽 클릭해 하위 노드를 접을 수 있습니다. 또한 왼쪽 상단에 존재하는 필터 버튼을 클릭해 특정 클라우드만 확인하거나, 사용하지 않는 리소스도 확인할 수 있습니다.</p>
+            <p><img src="https://user-images.githubusercontent.com/37172677/97113048-23684280-172b-11eb-9e9a-8b5d9129aaf1.png" alt="image"></p>
+            <p>마우스 왼쪽 클릭으로 간단한 정보를 확인할 수 있습니다. 왼쪽 클릭을 통해 나타난 모달에는 모든 세션에서 지원하는 Delete와 Detail 버튼이 존재하며 Server와 Database에는 On, Off 버튼도 존재합니다. </p>
+            <p><img src="https://user-images.githubusercontent.com/37172677/97169314-33386300-17cd-11eb-8c5d-e82ac5b49ebc.png" alt="image"></p>
+            <p>페이지 오른족 상단에 존재하는 Create 버튼을 클릭 시 사용자가 선택한 클라우드에 특정 리소스를 생성할 수 있습니다.</p>
+            <p><img src="https://user-images.githubusercontent.com/37172677/97169349-42b7ac00-17cd-11eb-9c7c-755800da4697.png" alt="image"></p>
+            <hr>
+            <li>Scheduler </li>
+            <p>사용자가 클라우드를 사용할 때 클라우드 리소스를 특정 시간에만 켜고, 특정 시간을 제외하고는 꺼놓을 수 있는 스케쥴 기능이 있는 페이지입니다. 현재 설정된 스케줄 기능을 테이블에서 확인할 수 있으며 상단에 Add와 Delete로 추가와 삭제가 가능합니다.</p>
+            <p><img src="https://user-images.githubusercontent.com/37172677/97113123-9c679a00-172b-11eb-8e52-22dc81c86d4f.png" alt="image"></p>
+            <hr>
+            <li>Setting </li>
+            <p>사용자가 새로운 클라우드를 등록하거나 존재하는 클라우드 확인, 삭제 그리고 로그인할 때 사용하는 비밀번호를 변경할 때 사용하는 페이지입니다.</p>
+            <p><img src="https://user-images.githubusercontent.com/37172677/97169427-67ac1f00-17cd-11eb-8196-589cec7e4463.png" alt="image"></p>
+            <hr>
+            <li>Sidebar </li>
+            <p>라우터 기능을 통한 페이지 이동을 지원하며 하단에 존재하는 로그아웃 버튼을 통해 로그아웃 기능을 Refresh 버튼을 이용해 현재 가지고 있는 데이터를 최신 데이터셋으로 바꾸는 기능을 지원합니다. </p>
+            <hr>
+        </ol>
+
+        </div>
+
+    </div>
+
+
+
+
+    <footer>
+        <div>Copyright 2020. CRMS all rights reserved.</div>
+    </footer>
+</body>
+
+</html>

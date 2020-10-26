@@ -1,113 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRMS</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/guide.css">
+    <script>
+        function goto(url) {
+            if (url.indexOf('github') > -1) {
+                window.open(url)
+            } else {
+                window.location.href = url
+            }
+        }
+    </script>
 </head>
+
 <body>
     <header class="header-container">
         <div>
             <nav>
-                <a href="#" id="logo">CRMS</a>
+                <a href="./idnex.html" id="logo">CRMS</a>
             </nav>
             <div>
                 <ul class="nav__contents">
-                    <li><button class="nav__contents--content">소개</button></li>
-                    <li><button class="nav__contents--content">Guide</button></li>
-                    <li><button class="nav__contents--content">개발문서</button></li>
-                    <li><button class="nav__contents--content">github</button></li>
-                    <li><button class="nav__contents--content">개발자 소개</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('./index.html')">소개</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('./guide.html')">Guide</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('./functions.html')">기능 소개</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('./api.html')">API 문서</button></li>
+                    <li><button class="nav__contents--content"
+                            onclick="goto('https://github.com/crms-team/crms')">github</button></li>
                 </ul>
             </div>
-         </div>
+        </div>
     </header>
-    
-    <section class="section-container">
+
+    <div style="width: 60%; margin-left: 20%">
         <div class="content-container top">
+            <h1 id="guide-in-crms">Guide in CRMS</h1>
+            <ol>
+                <li><span onclick="goto('#install')">CRMS 설치 가이드</span></li>
+                <li><span onclick="goto('#aws')">AWS Key 발급 방법</span></li>
+                <li><span onclick="goto('#azure')">Azure Key 발급 방법</span></li>
+                <li><span onclick="goto('#using')">CRMS 사용 방법</button></li>
+            </ol>
+            <hr>
 
-            <div class="section__content-container">
-                
-                <div class="section">
-                    <h2 class="content__title">CRMS</h2>
-                    <p class="content">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <br/>
-                    <p class="content">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-                <div class="section images">
-                    <p class="content">
-                        <img class="left-img"src="./img/img.JPG" alt="">
+            <h3 id="install">CRMS 설치 가이드</h3>
+            <ol>
+                <li>
+                    <p>프로젝트 파일을 다운로드 받습니다.</p>
+                </li>
+                <pre>npm i</pre>
+                <li>
+                    <p>Terminal에서 위 명령어를 입력해 필요한 모듈들을 설치합니다.</p>
+                </li>
+                <li>
+                    <p>폴더 최상단에 .env파일을 만듭니다.</p>
+                </li>
+                <pre>REACT_APP_SERVER_URL=http://localhost:4000</pre>
+                <li>
+                    <p>.env 파일안에 위와 같이 작성합니다. </p>
+                </li>
+                <pre>npm run-script build
+node server</pre>
+                <li>
+                    <p>그 후 위 명령어를 실행해 CRMS를 실행합니다.</p>
+                </li>
+            </ol>
+            <h4 id="-crms-">설치 완료 후 CRMS를 사용하기 전 다음과 같은 준비 과정이 필요합니다.</h4>
+            <p><br /></p>
+            <hr>
+            <h3 id="aws">AWS Key 발급 방법</h3>
+            <p><br /></p>
+            <ol>
+                <li>
+                    <p><a href="https://aws.amazon.com/ko/">https://aws.amazon.com/ko/</a> 에 접속하고 본인 계정으로 로그인합니다.</p>
+                </li>
+                <li>
+                    <p><a
+                            href="https://console.aws.amazon.com/iam/home?region=ap-northeast-2#/users">https://console.aws.amazon.com/iam/home?region=ap-northeast-2#/users</a>
+                        에 접근한 후 사용자 추가를 누릅니다.</p>
+                </li>
+                <li>
+                    <p>사용자 이름을 작성한 후 프로그래밍 방식 액세스를 체크한 후 다음을 누릅니다.</p>
+                </li>
+                <p><img src="https://user-images.githubusercontent.com/37172677/97140411-e4280900-179f-11eb-8fb7-0402094ea153.png"
+                        alt="image"></p>
+                <li>기존 정책 직접 연결을 클릭하고 아래 표에서 해당하는 내용을 찾아 필터에서 검색합니다.</li>
+                <p><img src="https://user-images.githubusercontent.com/37172677/97140341-b80c8800-179f-11eb-9644-0338880d4b9d.png"
+                        alt="image"></p>
+                <p><img src="https://user-images.githubusercontent.com/37172677/97140433-f0ac6180-179f-11eb-9fd2-0b09f038a7e4.png"
+                        alt="image"></p>
+                <li>
+                    <p>그 후 검토 페이지까지 다음을 누릅니다.</p>
+                </li>
+                <li>
+                    <p>사용자 만들기를 클릭합니다.</p>
+                </li>
+                <p><img src="https://user-images.githubusercontent.com/37172677/97140455-fdc95080-179f-11eb-881c-24baa2584e9d.png"
+                        alt="image"></p>
+                <li>그 후 만들어진 키에 대한 액세스 키와 비밀 액세스 키가 담겨있는 csv를 다운로드 하시면 완료입니다.</li>
+            </ol>
+            <hr>
+            <h3 id="azure">Azure Key 발급 방법</h3>
+            <p><br /></p>
+            <ol>
+                <li>
+                    <p>로그인을 진행한 후 <a href="https://portal.azure.com/#home에">https://portal.azure.com/#home에</a> 접근합니다.
                     </p>
-                    <p class="content">
-                        <img class="right-img" src="./img/img.JPG" alt="">
-                    </p>
-                </div>
+                </li>
+                <li>
+                    <p>상단 검색창에 Azure Active Directory를 입력합니다.</p>
+                </li>
+                <li>
+                    <p>좌측 메뉴에서 앱 등록을 클릭합니다.</p>
+                </li>
+                <p><img src="https://user-images.githubusercontent.com/37172677/97140676-80521000-17a0-11eb-8b5c-fdcabbfafb7f.png"
+                        alt="image"></p>
+                <li>클릭한 후 새 등록을 클릭합니다.</li>
+                <p><img src="https://user-images.githubusercontent.com/37172677/97140738-a081cf00-17a0-11eb-9107-cd9e6652c34e.png"
+                        alt="image"></p>
+                <li>이름을 입력한 후 이 조직 디렉터리의 계정만(기본 디렉터리만 - 단일 테넌트)를 클릭하고 등록 버튼을 클릭합니다.</li>
+                <p><img src="https://user-images.githubusercontent.com/37172677/97140758-af688180-17a0-11eb-945f-882f2c57f309.png"
+                        alt="image"></p>
+                <li>등록한 후 나오는 기본정보 창에서 클라이언트 ID와 테넌트 ID를 메모합니다.</li>
+                <p><img src="https://user-images.githubusercontent.com/37172677/97141030-48979800-17a1-11eb-9588-39feb85bc850.png"
+                        alt="image"></p>
+                <li>그 후 좌측 메뉴에서 인증서 및 암호를 클릭합니다.</li>
+                <p><img src="https://user-images.githubusercontent.com/37172677/97141065-59480e00-17a1-11eb-803c-1170527810c7.png"
+                        alt="image"></p>
+                <li>
+                    <p>그 후 새 클라이언트 암호 버튼을 클릭하신 후 나오는 Secret key를 메모합니다.</p>
+                </li>
+                <li>
+                    <p>그 후 검색창에서 구독을 입력하고 이동합니다.</p>
+                </li>
+                <li>
+                    <p>본인이 만든 애플리케이션이 속한 구독을 선택합니다.</p>
+                </li>
+                <li>
+                    <p>구독 ID를 복사하여 적어놓습니다.</p>
+                </li>
+                <li>
+                    <p>그 후 좌측 메뉴에서 IAM을 클릭합니다.</p>
+                </li>
+                <p><img src="https://user-images.githubusercontent.com/37172677/97141161-8a284300-17a1-11eb-8870-03c08938df8a.png"
+                        alt="image"></p>
+                <li>추가버튼을 클릭한 후 역할 할당 추가 버튼을 클릭합니다. 그 후 아래 표를 보고 해당하는 역할을 고릅니다.</li>
+                <p><img src="https://user-images.githubusercontent.com/37172677/97140341-b80c8800-179f-11eb-9644-0338880d4b9d.png"
+                        alt="image"></p>
+                <li>다음에 대한 액세스 할당을 사용자, 그룹 또는 서비스 주체로 선택한 후 등록한 앱을 선택합니다.</li>
+                <p><img src="https://user-images.githubusercontent.com/37172677/97141255-b8a61e00-17a1-11eb-9a90-5725c009fb07.png"
+                        alt="image"></p>
+                <hr>
+                <h4 id="-crms-">위 과정을 완료했다면 CRMS를 사용할 준비가 완료되었습니다! 하단에 과정을 진행해주시면 감사하겠습니다.</h4>
+                <p><br /></p>
+                <h3 id="using">CRMS 사용 방법</h3>
+                <p><br /></p>
+                <ol>
+                    <li>
+                        <p>그 후 data 폴더에서 crms.config 파일 안에 있는 비밀번호를 확인합니다. ( 초기 설정은 1234입니다. )</p>
+                    </li>
+                    <li>
+                        <p>사이트에 접근하고 로그인을 진행합니다.</p>
+                    </li>
+                    <li>
+                        <p>Sidebar에 Setting 페이지로 이동하여 Register Cloud Key를 클릭합니다.</p>
+                    </li>
+                    <p><img src="https://user-images.githubusercontent.com/37172677/97140027-28ff7000-179f-11eb-8830-343daa18a4ff.png"
+                            alt="image"></p>
+                    <li>
+                        <p>원하는 벤더를 입력한 후 ID를 입력하고 중복 확인을 클릭합니다.</p>
+                    </li>
+                    <p> <img src="https://user-images.githubusercontent.com/37172677/97140085-40d6f400-179f-11eb-86df-1e9dcf88d982.png"
+                            alt="image"></p>
+                    <li>
+                        <p>AWS에 경우 csv 파일 안에 Access key와 Secret key에 대한 값을 입력한 후 사용자에region을 입력한 후 추가를 클릭하면 완료입니다. </p>
+                    </li>
+                    <li>
+                        <p>Azure에 경우 적어놓으신 메모에 있는 Subscription ID, Client ID, Secret Key, TenantID를 입력한 후 추가를 클릭하면
+                            완료입니다.</p>
+                    </li>
+                </ol>
+                <hr>
 
-            </div>
         </div>
-    </section>
+
+    </div>
 
 
-    <section class="section-container mid">
-        <div class="content-container">
 
-            <div class="section__content-container">
-                
-                <div class="section">
-                    <h2 class="content__title">CRMS</h2>
-                    <p class="content">
-                        <img src="./img/img.JPG" alt="">
-                    </p>
-                </div>
-
-                <div class="section">
-                    <h2 class="content__title">CRMS</h2>
-                    <p class="content">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-    <section class="section-container">
-        <div class="content-container top">
-
-            <div class="section__content-container">
-
-                <div class="section images">
-                    <p class="content">
-                        <img class="bottom-left-img"src="./img/img.JPG" alt="">
-                    </p>
-                    <p class="content">
-                        <img class="bottom-right-img" src="./img/img.JPG" alt="">
-                    </p>
-                    
-                    
-                </div>
-
-                <div class="section">
-                    <h2 class="content__title">CRMS</h2>
-                    <p class="content">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <br/>
-                    <p class="content">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-               
-
-            </div>
-
-        </div>
-    </section>
 
     <footer>
         <div>Copyright 2020. CRMS all rights reserved.</div>
     </footer>
 </body>
+
 </html>

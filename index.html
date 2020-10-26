@@ -6,105 +6,60 @@
     <title>CRMS</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
+    <script>
+        function goto(url) {
+            if (url.indexOf('github') > -1){
+                window.open(url)
+            } else {
+                window.location.href = url
+            }
+        }
+    </script>
 </head>
 <body>
     <header class="header-container">
         <div>
             <nav>
-                <a href="#" id="logo">CRMS</a>
+                <a href="./idnex.html" id="logo">CRMS</a>
             </nav>
             <div>
                 <ul class="nav__contents">
-                    <li><button class="nav__contents--content">소개</button></li>
-                    <li><button class="nav__contents--content">Guide</button></li>
-                    <li><button class="nav__contents--content">개발문서</button></li>
-                    <li><button class="nav__contents--content">github</button></li>
-                    <li><button class="nav__contents--content">개발자 소개</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('./index.html')">소개</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('./guide.html')">Guide</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('./functions.html')">기능 소개</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('./api.html')">API 문서</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('https://github.com/crms-team/crms')">github</button></li>
                 </ul>
             </div>
          </div>
     </header>
     
-    <section class="section-container">
+    <div style="width: 60%; margin-left: 20%">
         <div class="content-container top">
-
-            <div class="section__content-container">
-                
-                <div class="section">
-                    <h2 class="content__title">CRMS</h2>
-                    <p class="content">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-                <div class="section">
-                    <p class="content">
-                        <img src="./img/img.JPG" alt="">
-                    </p>
-                </div>
-
-            </div>
-
+            <h1 id="crms">CRMS</h1>
+            <hr>
+        <p id="crms-cloud-resource-management-service-3-">CRMS는 Cloud Resource Management Service에 약자로 <strong>클라우드 리소스를 관리해주는 도구</strong> 입니다. </p>
+        <p>저희는 클라우드 리소스 관리가 어렵다는 점을 해소하고자 <b>Multi Vendor 지원</b>, <b>Resource Management</b>, <b>비용 최적화</b> 총 3 가지 기능에 집중했습니다.</p>
+        <p>CRMS는 Apache 2.0 License를 따르고 있으며, 개발 관련 Contribution은 <a href="https://github.com/crms-team/crms/blob/master/CONTRIBUTING.md">여기</a>에서 확인해주세요.</p>
+        <p><br/></p>
+        <h3 id="1-multi-cloud-">1. Multi Cloud 지원</h3>
+        <p>CRMS는 멀티 클라우드 리소스에 대한 Create, Read, Update, Delete 서비스를 통합 API에서 제공함으로 보다 편하게 멀티 클라우드 상황에서 사용 가능합니다. </p>
+        <p> <img src="https://user-images.githubusercontent.com/37172677/97113086-6aeece80-172b-11eb-889d-c1fdbb1cc39e.png" alt="image"> </p>
+        <h3 id="2-cloud-resource-manage">2. Cloud Resource Manage</h3>
+        <p>CRMS는 멀티 클라우드 환경을 시각화 그래프를 이용해서 확인할 수 있으며, 리소스에 변화 내용 또한 표 안에서 확인할 수 있습니다. 이를 통해 사용자는 보다 편하게 멀티 클라우드에 대한 환경을 파악하고 리소스를 관리 할 수 있습니다.</p>
+        <p><img src="https://user-images.githubusercontent.com/37172677/97113048-23684280-172b-11eb-9e9a-8b5d9129aaf1.png" alt="image"></p>
+        <h3 id="3-">3. 비용 최적화</h3>
+        <p>CRMS는 클라우드 환경에서 쉽게 발생할 수 있는 비용 문제에 대해서 보다 쉽게 고객이 해결할 수 있도록 비용 최적화 도구인 Scheduler를 제공합니다. 이를 통해 사용자는 본인 클라우드 인스턴스에 사용시간을 정해 사용함으로서 클라우드 안에서 비용 최적화를 할 수 있습니다.</p>
+        <p><img src="https://user-images.githubusercontent.com/37172677/97113123-9c679a00-172b-11eb-8e52-22dc81c86d4f.png" alt="image"></p>
+        <h4 id="-">자세한 내용은 아래 영상을 통해 확인하실 수 있습니다.</h4>
+        <iframe width="1080" height="600" src="https://www.youtube-nocookie.com/embed/-m4p5FVxNCA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p><br/></p>
+        <h4 id="-">앞으로도 더욱 많은 사용자가 더욱 쉽게 클라우드 리소스를 관리할 수 있도록 많은 기능을 추가할 예정입니다.</h4>
+        <p><br/></p>
+        <hr>
         </div>
-    </section>
+    </div>
 
-
-    <section class="section-container mid">
-        <div class="content-container">
-
-            <div class="section__content-container">
-
-                <div class="section">
-                    <p class="content">
-                        <img src="./img/img.JPG" alt="">
-                    </p>
-                </div>
-
-                <div class="section">
-                    <h2 class="content__title">CRMS</h2>
-                    <p class="content">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-    <section>
-        <div class="section__contents--dev">
-            <div class="dev-header">
-                <h2>개발자들</h2>
-            </div>
-                <ul class="dev-list">
-                    <li>
-                        <div class="dev-image">
-                            <img src="./img/img.JPG" alt="">
-                        </div>
-                        <div class="dev-info">
-                            <span class="dev-info--name">Nickname</span>
-                            <span class="dev-info--info">infomation</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="dev-image">
-                            <img src="./img/img.JPG" alt="">
-                        </div>
-                        <div class="dev-info">
-                            <span class="dev-info--name">Nickname</span>
-                            <span class="dev-info--info">infomation</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="dev-image">
-                            <img src="./img/img.JPG" alt="">
-                        </div>
-                        <div class="dev-info">
-                            <span class="dev-info--name">Nickname</span>
-                            <span class="dev-info--info">infomation</span>
-                        </div>
-                    </li>
-                </ul>
-        </div>
-    </section>
 
     <footer>
         <div>Copyright 2020. CRMS all rights reserved.</div>

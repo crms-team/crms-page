@@ -13,13 +13,6 @@ span,
 applet,
 object,
 iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
 blockquote,
 pre,
 a,
@@ -45,16 +38,12 @@ sub,
 sup,
 tt,
 var,
-b,
 u,
 i,
 center,
 dl,
 dt,
 dd,
-ol,
-ul,
-li,
 fieldset,
 form,
 label,
@@ -115,9 +104,35 @@ body {
     line-height: 1;
 }
 
-ol,
+li {
+    padding-bottom: 10px;
+}
+img {
+    max-width: 1080px;
+}
 ul {
-    list-style: none;
+    margin: 0;
+}
+code {
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+pre {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
 }
 
 blockquote,
@@ -138,4 +153,9 @@ table {
     border-collapse: collapse;
 
     border-spacing: 0;
+}
+
+.half_img {
+    width: 530px;
+    margin-right: 10px;
 }

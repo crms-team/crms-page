@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRMS</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/guide.css">
+    <script>
+        function goto(url) {
+            if (url.indexOf('github') > -1){
+                window.open(url)
+            } else {
+                window.location.href = url
+            }
+        }
+    </script></head>
+<body>
+    <header class="header-container">
+        <div>
+            <nav>
+                <a href="./idnex.html" id="logo">CRMS</a>
+            </nav>
+            <div>
+                <ul class="nav__contents">
+                    <li><button class="nav__contents--content" onclick="goto('./index.html')">소개</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('./guide.html')">Guide</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('./functions.html')">기능 소개</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('./api.html')">API 문서</button></li>
+                    <li><button class="nav__contents--content" onclick="goto('https://github.com/crms-team/crms')">github</button></li>
+                </ul>
+            </div>
+         </div>
+    </header>
+    
+
+    <div style="width: 60%; margin-left: 20%">
+        <div class="content-container top">
+            
+            <h1 id="crms-api-document">CRMS API Document</h1>
+            <ul>
+            <li><code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code> 메소드만 사용됩니다.</li>
+            <li>모든 API는 PATH가 <code>/api</code>로 시작합니다.</li>
+            <li>자료형 표시는 <code>[자료형]</code> 형태로 작성했습니다.</li>
+            <li><code>GET</code>, <code>DELETE</code>는 기본적으로 query 형식, <code>POST</code>, <code>PUT</code>은 기본적으로 body 형식을 따르지만 예외 케이스는 설명란에 표시했습니다.</li>
+            </ul>
+            <hr>
+            <h1 id="api-list">API List</h1>
+            <ul>
+            <li><p><strong>Cloud Resource</strong></p>
+            <ul>
+            <li><code>/api/cloud/data</code></li>
+            <li><code>/api/cloud/data/:resource</code></li>
+            <li><code>/api/cloud/data/:resource/etc/:func</code></li>
+            </ul>
+            </li>
+            <li><p><strong>Key</strong></p>
+            <ul>
+            <li><code>/api/cloud/key</code></li>
+            <li><code>/api/cloud/key/list</code></li>
+            </ul>
+            </li>
+            <li><p><strong>Etc.</strong></p>
+            <ul>
+            <li><code>/api/scheduler</code></li>
+            <li><code>/api/cloud/history</code></li>
+            </ul>
+            </li>
+            </ul>
+            <hr>
+            <h2 id="key">Key</h2>
+            <p>Cloud key를 관리하는 API입니다.</p>
+            <h5 id="-api-cloud-key-"><code>/api/cloud/key</code></h5>
+            <ul>
+            <li><p><code>GET</code></p>
+            <p>  등록한 클라우드 키에 대한 정보를 가져옵니다</p>
+            <ul>
+            <li><strong>Required:</strong><ol>
+            <li><code>key_id=[string]</code></li>
+            </ol>
+            </li>
+            <li><p><strong>Optional:</strong></p>
+            <ol>
+            <li>None</li>
+            </ol>
+            </li>
+            <li><p><strong>Success Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 2xx </li>
+            <li><strong>Content:</strong> <pre><code class="lang-javascript">  { 
+                  <span class="hljs-attribute">result </span>: true, 
+                  data: {
+                      <span class="hljs-string">"vendor"</span>: <span class="hljs-string">"aws"</span> | <span class="hljs-string">"azure"</span>,
+                      <span class="hljs-string">"keys"</span>: keyData
+                  }
+              }
+            </code></pre>
+            </li>
+            </ul>
+            </li>
+            <li><p><strong>Error Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 4xx </li>
+            <li><strong>Content:</strong> <code>{ result : false, data: undefined }</code></li>
+            <li>해당하는 키가 없는 경우</li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            <li><p><code>POST</code></p>
+            <p>  클라우드키를 등록하고, 스캔을 진행합니다.</p>
+            <p>  vendor는 총 2가지를 지원하며 키에 대한 값이 필수로 들어가야 합니다. </p>
+            <ol>
+            <li>aws<ul>
+            <li>accessKeyId</li>
+            <li>secretAccessKey</li>
+            <li>region</li>
+            </ul>
+            </li>
+            <li>azure<ul>
+            <li>subscription</li>
+            <li>tenant_id</li>
+            <li>scret_key</li>
+            <li>client_id</li>
+            </ul>
+            </li>
+            </ol>
+            </li>
+            </ul>
+            <ul>
+            <li><p><strong>Required:</strong></p>
+            <ol>
+            <li><code>vendor=[string]</code></li>
+            <li><code>cloud_id=[string]</code></li>
+            <li><code>keys=[key]</code> =&gt; keys 안에 Optional에 있는 인자들이 들어갑니다.</li>
+            </ol>
+            </li>
+            <li><p><strong>Optional:</strong></p>
+            <ol>
+            <li><code>accessKeyId=[string]</code></li>
+            <li><code>secretAccessKey=[string]</code></li>
+            <li><code>region=[string]</code></li>
+            <li><code>subscription=[string]</code></li>
+            <li><code>tenant_id=[string]</code></li>
+            <li><code>client_id=[string]</code></li>
+            </ol>
+            </li>
+            </ul>
+            <ul>
+            <li><p><strong>Success Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 2xx </li>
+            <li><strong>Content:</strong> <pre><code class="lang-javascript">  { 
+                  <span class="hljs-attribute">result </span>: true, 
+              }
+            </code></pre>
+            </li>
+            </ul>
+            </li>
+            <li><p><strong>Error Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 4xx </li>
+            <li><strong>Content:</strong> <code>{ result : false, msg: Error }</code></li>
+            <li>에러가 발생했거나 파라미터가 잘못된 형식일 경우.</li>
+            </ul>
+            </li>
+            </ul>
+            <ul>
+            <li><p><code>PUT</code></p>
+            <p>  등록된 클라우드 키를 수정합니다.</p>
+            <ul>
+            <li><p><strong>Required:</strong></p>
+            <ol>
+            <li><code>vendor=[string]</code></li>
+            <li><code>key_id=[string]</code></li>
+            <li><code>keys=[key]</code> =&gt; keys 안에 Optional에 있는 인자들이 들어갑니다.</li>
+            </ol>
+            </li>
+            <li><p><strong>Optional:</strong></p>
+            <ol>
+            <li><code>accessKeyId=[string]</code></li>
+            <li><code>secretAccessKey=[string]</code></li>
+            <li><code>region=[string]</code></li>
+            <li><code>subscription=[string]</code></li>
+            <li><code>tenant_id=[string]</code></li>
+            <li><code>client_id=[string]</code></li>
+            </ol>
+            </li>
+            </ul>
+            </li>
+            </ul>
+            <ul>
+            <li><p><strong>Success Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 2xx </li>
+            <li><strong>Content:</strong> <pre><code class="lang-javascript">  { 
+                  <span class="hljs-attribute">result </span>: true, 
+              }
+            </code></pre>
+            </li>
+            </ul>
+            </li>
+            <li><p><strong>Error Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 4xx </li>
+            <li><strong>Content:</strong> <code>{ result : false, msg: Error }</code></li>
+            <li>에러가 발생했거나 파라미터가 잘못된 형식일 경우.<ul>
+            <li><code>DELETE</code></li>
+            </ul>
+            </li>
+            </ul>
+            <p>등록된 클라우드 키를 삭제합니다.</p>
+            </li>
+            <li><p><strong>Required:</strong></p>
+            <ol>
+            <li><code>key_id=[string]</code></li>
+            </ol>
+            </li>
+            <li><p><strong>Optional:</strong></p>
+            <ol>
+            <li><code>none</code></li>
+            </ol>
+            </li>
+            </ul>
+            <ul>
+            <li><p><strong>Success Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 2xx </li>
+            <li><strong>Content:</strong> <pre><code class="lang-javascript">  { 
+                  <span class="hljs-attribute">result </span>: true, 
+              }
+            </code></pre>
+            </li>
+            </ul>
+            </li>
+            <li><p><strong>Error Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 4xx </li>
+            <li><strong>Content:</strong> <code>{ result : false, msg: Error }</code></li>
+            <li>에러가 발생했거나 파라미터가 잘못된 형식일 경우.</li>
+            </ul>
+            </li>
+            </ul>
+            <h5 id="-api-cloud-key-list-"><code>/api/cloud/key/list</code></h5>
+            <ul>
+            <li><p><code>GET</code></p>
+            <p>  등록한 클라우드 키에 대한 정보를 가져옵니다.</p>
+            <p>  <code>options</code>를 줄 경우 해당하는 클라우드 키 정보를 가져오며 아닐 경우 모두 가져옵니다.</p>
+            <ul>
+            <li><strong>Required:</strong><ol>
+            <li>None</li>
+            </ol>
+            </li>
+            <li><p><strong>Optional:</strong></p>
+            <ol>
+            <li><code>options=[keyId Array]</code></li>
+            </ol>
+            </li>
+            <li><p><strong>Success Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 2xx </li>
+            <li><strong>Content:</strong> <pre><code class="lang-javascript">  { 
+                  result : <span class="hljs-literal">true</span>, 
+                  keys: [{
+                      <span class="hljs-string">"vendor"</span>: <span class="hljs-string">"aws"</span> | <span class="hljs-string">"azure"</span>,
+                      <span class="hljs-string">"keys"</span>: keyData
+                  }]
+              }
+            </code></pre>
+            </li>
+            </ul>
+            </li>
+            <li><p><strong>Error Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 4xx </li>
+            <li><strong>Content:</strong> <code>{ result : false, data: undefined }</code></li>
+            <li>해당하는 키가 없는 경우</li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+            <hr>
+            <h2 id="etc-">Etc.</h2>
+            <p>기타 다른 API 리스트입니다.</p>
+            <pre><code>-<span class="ruby"> <span class="hljs-string">`/api/scheduler`</span>
+            </span>-<span class="ruby"> <span class="hljs-string">`/api/cloud/history`</span></span>
+            </code></pre><h5 id="-api-scheduler-"><code>/api/scheduler</code></h5>
+            <ul>
+            <li><p><code>GET</code></p>
+            <p>  등록한 scheduler 데이터를 가져옵니다.</p>
+            <ul>
+            <li><strong>Required:</strong><ol>
+            <li>None</li>
+            </ol>
+            </li>
+            <li><p><strong>Optional:</strong></p>
+            <ol>
+            <li>None</li>
+            </ol>
+            </li>
+            <li><p><strong>Success Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 2xx </li>
+            <li><strong>Content:</strong> <pre><code class="lang-javascript">  { 
+                  <span class="hljs-attribute">result </span>: true, 
+                  schedulerData: [scheduler data]
+              }
+            </code></pre>
+            </li>
+            </ul>
+            </li>
+            <li><p><strong>Error Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 4xx </li>
+            <li><strong>Content:</strong> <code>{ result : false }</code><ul>
+            <li>에러 발생시</li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            <li><p><code>POST</code></p>
+            <p>  등록한 scheduler 데이터를 등록합니다.</p>
+            <ul>
+            <li><strong>Required:</strong><ol>
+            <li><code>keyId=[string]</code></li>
+            <li><code>time=[time]</code> <code>{ hour: number, min: number }</code> 형식의 시간 분 </li>
+            <li><code>type=[boolean]</code> true =&gt; on, false =&gt; off</li>
+            <li><code>session=&#39;server&#39; | &#39;database&#39;</code></li>
+            <li><code>args=[args]</code> =&gt; 필요한 정보들</li>
+            <li><code>resourceId=[string]</code></li>
+            </ol>
+            </li>
+            <li><p><strong>Optional:</strong></p>
+            <ol>
+            <li>None</li>
+            </ol>
+            </li>
+            <li><p><strong>Success Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 2xx </li>
+            <li><strong>Content:</strong> <pre><code class="lang-javascript">  { 
+                  <span class="hljs-attribute">result </span>: true
+              }
+            </code></pre>
+            </li>
+            </ul>
+            </li>
+            <li><p><strong>Error Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 4xx </li>
+            <li><strong>Content:</strong> <code>{ result : false }</code></li>
+            <li>에러 발생시</li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            <li><p><code>DELETE</code></p>
+            <p>  등록한 scheduler 데이터를 삭제합니다.</p>
+            <ul>
+            <li><strong>Required:</strong><ol>
+            <li><code>schedulerId=[string]</code></li>
+            </ol>
+            </li>
+            <li><p><strong>Optional:</strong></p>
+            <ol>
+            <li>None</li>
+            </ol>
+            </li>
+            <li><p><strong>Success Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 2xx </li>
+            <li><strong>Content:</strong> <pre><code class="lang-javascript">  { 
+                  <span class="hljs-attribute">result </span>: true
+              }
+            </code></pre>
+            </li>
+            </ul>
+            </li>
+            <li><p><strong>Error Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 4xx </li>
+            <li><strong>Content:</strong> <code>{ result : false }</code></li>
+            <li>에러 발생시</li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+            <h5 id="-api-cloud-history-"><code>/api/cloud/history</code></h5>
+            <ul>
+            <li><p><code>GET</code></p>
+            <p>  해당하는 클라우드 History를 가져옵니다.</p>
+            <ul>
+            <li><strong>Required:</strong><ol>
+            <li>None</li>
+            </ol>
+            </li>
+            <li><p><strong>Optional:</strong></p>
+            <ol>
+            <li><code>key_id=[string]</code></li>
+            <li><code>count=[number]</code> =&gt; 가져올 개수</li>
+            </ol>
+            </li>
+            <li><p><strong>Success Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 2xx </li>
+            <li><strong>Content:</strong> <pre><code class="lang-javascript">  { 
+                  <span class="hljs-attribute">result </span>: true, 
+                  history: [History data]
+              }
+            </code></pre>
+            </li>
+            </ul>
+            </li>
+            <li><p><strong>Error Response:</strong></p>
+            <ul>
+            <li><strong>Code:</strong> 4xx </li>
+            <li><strong>Content:</strong> <code>{ result : false }</code></li>
+            <li>에러 발생시</li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+            
+        </div>
+
+    </div>
+
+    <footer>
+        <div>Copyright 2020. CRMS all rights reserved.</div>
+    </footer>
+</body>
+</html>
